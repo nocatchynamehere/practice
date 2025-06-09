@@ -1,0 +1,35 @@
+SQL Problem (Level 7): Aggregate with GROUP BY and JOIN
+Tables:
+
+sales
+
+sale_id	store_id	amount
+1	201		200
+2	202		150
+3	201		300
+4	203		100
+
+stores
+
+store_id	region
+201		North
+202		South
+203		North
+
+Task:
+Write a SQL query to return the total sales per region.
+Output columns: region, total_sales
+
+Solution
+
+SELECT
+  sales.region,
+  sum(sales.amount) as total_sales
+FROM
+  `sales`
+INNER JOIN
+  `stores`
+ON
+  sales.store_id = stores.store_id
+GROUP BY
+  stores.region
