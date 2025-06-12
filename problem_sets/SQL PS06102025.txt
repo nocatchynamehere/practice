@@ -1,0 +1,40 @@
+SQL Problem (Level 7): Join + Filtering + Sorting
+
+06/10/2025
+
+Tables:
+
+products
+
+product_id	name	category
+1		Widget	Tools
+2		Gadget	Tools
+3		Hammer	Hardware
+
+sales
+
+sale_id	product_id	quantity
+1	1		3
+2	2		5
+3	1		2
+4	3		1
+
+Task:
+Write a query to return the total quantity sold per product in the "Tools" category, showing: name, total_quantity.
+Order by total_quantity descending.
+
+SELECT
+  p.name,
+  SUM(s.quantity) as total_quantity
+FROM
+  `products` p
+JOIN
+  `sales` s
+ON
+  p.product_id = s.product_id
+WHERE
+  p.category = 'Tools'
+GROUP BY
+  p.name
+ORDER BY
+  total_quantity DESC;

@@ -1,4 +1,7 @@
 SQL Problem (Level 7): Aggregate with GROUP BY and JOIN
+
+06/08/2025
+
 Tables:
 
 sales

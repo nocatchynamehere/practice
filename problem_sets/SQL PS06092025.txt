@@ -1,0 +1,36 @@
+SQL Problem (Level 7): Filtering Aggregated Results from a Join
+
+06/09/2025
+
+Tables:
+
+employees
+
+id	department	salary
+1	HR		50000
+2	IT		70000
+3	HR		52000
+4	IT		65000
+
+departments
+
+department	manager
+HR		Alice
+IT		Bob
+
+Task:
+Write a query to return the manager and average salary for each department, but only include departments with an average salary over 60000.
+
+SELECT
+  departments.manager as department_manager,
+  AVG(employees.salary) as average_salary
+FROM
+  `employees`
+INNER JOIN
+  `departments`
+ON
+  employees.department = departments.department
+GROUP BY
+  departments.manager
+HAVING
+  average_salary > 60000;

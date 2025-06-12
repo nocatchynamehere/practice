@@ -1,0 +1,37 @@
+SQL Problem (Level 7): Join + COUNT + Filtering
+
+06/11/2025
+
+Tables:
+
+users
+
+user_id	name
+1	Alice
+2	Bob
+3	Charlie
+
+logins
+
+login_id	user_id	timestamp
+1		1	2024-06-01 09:15:00
+2		1	2024-06-01 10:45:00
+3		2	2024-06-01 11:00:00
+
+Task:
+Write a query to return each user’s name and their total login count, but only include users who logged in more than once.
+Output columns: name, login_count
+
+SELECT
+  u.name,
+  COUNT(*) as login_count
+FROM
+  `users` u
+JOIN
+  `logins` l
+ON
+  u.user_id = l.user_id
+GROUP BY
+  u.name
+HAVING
+  COUNT(*) > 1
