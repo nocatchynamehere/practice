@@ -1,3 +1,4 @@
 # Practice Repo
 
-This is a repository for all of my practice sets in Python, SQL and Excel as well as any practice projects I may be working on.  At some point it might have a project or two for my portfolio.
+This is a repo folder for all of my learning toward becoming a data analyst.  As for now it includes a heavy
+hand of problems sets in the problem_sets folder organized by date.  It also has the beginnings of my projects.
