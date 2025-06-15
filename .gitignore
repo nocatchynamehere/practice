@@ -1,1 +1,3 @@
 .venv/
+page_dump*
+**/page_dump*
