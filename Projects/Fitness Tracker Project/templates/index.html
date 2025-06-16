@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fitness Tracker</title>
+</head>
+<body>
+    <h1>Fitness Log</h1>
+    <a href="/add">Add New Entry</a>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <tr>
+            <th>Date</th>
+            <th>Weight</th>
+            <th>Calories</th>
+            <th>Sleep (hrs)</th>
+            <th>Mood</th>
+            <th>Delete</th>
+        </tr>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.date.strftime('%Y-%m-%d') }}</td>
+            <td>{{ log.weight }}</td>
+            <td>{{ log.calories }}</td>
+            <td>{{ log.sleep_hours }}</td>
+            <td>{{ log.mood }}</td>
+            <td><a href="{{ url_for('delete_entry', id=log.id) }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
