@@ -1,0 +1,5 @@
+delivery_id,driver,warehouse,retail_location,timestamp,product,qty,status,delivery_hour,success_flag
+1001,Sam,W1,Store-A,2024-06-01 09:00:00,Beer Keg,5,Delivered,9,1
+1002,Lisa,W1,Store-B,2024-06-01 10:15:00,Soda Crate,7,Delivered,10,1
+1003,Sam,W2,Store-C,2024-06-01 12:00:00,Water Jug,2,damaged,12,0
+1007,Lisa,W1,Store-A,2024-06-01 15:00:00,Beer Keg,0,Delivered,15,1
