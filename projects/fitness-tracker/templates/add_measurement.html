@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-9">
+    <link rel="stylesheet" href="../static/styles.css">
+  </head>
 
 <h2>Add Measurement</h2>
 <form method="POST">
@@ -12,6 +17,7 @@
   <label>Arm: <input type="text" name="arm_inches"></label><br>
   <label>Resting HR: <input type="text" name="resting_heart_rate"></label><br>
   <label>Mood (1–10): <input type="number" name="mood" min="1" max="10"></label><br>
-  <label>Pain Level (1–10): <input type="number" name="pain_level" min="0" max="10"></label><br>
+  <label>Pain Level (0–10): <input type="number" name="pain_level" min="0" max="10"></label><br>
   <input type="submit" value="Save Measurement">
 </form>
+</html>

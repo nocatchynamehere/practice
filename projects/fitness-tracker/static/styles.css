@@ -1,0 +1,21 @@
+/* styles.css sheet for forms */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+form {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 2rem auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+input, label, select {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+}

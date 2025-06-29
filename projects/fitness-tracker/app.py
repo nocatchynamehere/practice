@@ -146,7 +146,7 @@ def add_measurement():
 
         # Create Measurement object
         new_entry = Measurement(
-            user_id=1,  # Temporary placeholder; replace with logged-in user's ID
+            user_id=1,  # Temporary placeholder; replace with user_id once user registration is done
             measurement_date=measurement_date,
             weight=weight,
             body_fat_pct=body_fat_pct,
