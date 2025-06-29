@@ -4,3 +4,4 @@ page_dump*
 **/page_dump*
 .env
 __pycache__/
+instance/
