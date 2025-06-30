@@ -131,37 +131,75 @@ def index():
 @app.route('/add_measurement', methods=['GET', 'POST'])
 def add_measurement():
     if request.method == 'POST':
-        # Parse form data
-        measurement_date = datetime.strptime(request.form['measurement_date'], '%Y-%m-%d')
-        weight = request.form.get('weight')
-        body_fat_pct = request.form.get('body_fat_pct')
-        hips_inches = request.form.get('hips_inches')
-        waist_inches = request.form.get('waist_inches')
-        chest_inches = request.form.get('chest_inches')
-        thigh_inches = request.form.get('thigh_inches')
-        arm_inches = request.form.get('arm_inches')
-        resting_heart_rate = request.form.get('resting_heart_rate')
-        mood = request.form.get('mood')
-        pain_level = request.form.get('pain_level')
+        try:
+            # Parse form data
+            measurement_date = datetime.strptime(request.form['measurement_date'], '%Y-%m-%d')
+            weight = float(request.form.get('weight'))
+            body_fat_pct = float(request.form.get('body_fat_pct'))
+            hips_inches = float(request.form.get('hips_inches'))
+            waist_inches = float(request.form.get('waist_inches'))
+            chest_inches = float(request.form.get('chest_inches'))
+            thigh_inches = float(request.form.get('thigh_inches'))
+            arm_inches = float(request.form.get('arm_inches'))
+            resting_heart_rate = int(request.form.get('resting_heart_rate'))
+            mood = int(request.form.get('mood'))
+            pain_level = float(request.form.get('pain_level'))
 
-        # Create Measurement object
-        new_entry = Measurement(
-            user_id=1,  # Temporary placeholder; replace with user_id once user registration is done
-            measurement_date=measurement_date,
-            weight=weight,
-            body_fat_pct=body_fat_pct,
-            hips_inches=hips_inches,
-            waist_inches=waist_inches,
-            chest_inches=chest_inches,
-            thigh_inches=thigh_inches,
-            arm_inches=arm_inches,
-            resting_heart_rate=resting_heart_rate,
-            mood=mood,
-            pain_level=pain_level
-        )
+            # Create Measurement object
+            new_entry = Measurement(
+                user_id=1,  # TODO Temporary placeholder; replace with user_id once user registration is done
+                measurement_date=measurement_date,
+                weight=weight,
+                body_fat_pct=body_fat_pct,
+                hips_inches=hips_inches,
+                waist_inches=waist_inches,
+                chest_inches=chest_inches,
+                thigh_inches=thigh_inches,
+                arm_inches=arm_inches,
+                resting_heart_rate=resting_heart_rate,
+                mood=mood,
+                pain_level=pain_level
+            )
 
-        db.session.add(new_entry)
-        db.session.commit()
-        return redirect(url_for('index'))
+            db.session.add(new_entry)
+            db.session.commit()
+            return redirect(url_for('index'))
+        
+        except (ValueError, TypeError):
+            flash("Invalid input. Please make sure all fields are correctly filled.", "error")
+            return render_template('add_measurement.html')
+        except Exception as e:
+            flash("Unexpected error. Please try again later.", "error")
+            return render_template('add_measurement.html')
 
     return render_template('add_measurement.html')
+
+@app.route('/add_sleep_log', methods=['GET', 'POST'])
+def add_sleep_log():
+    if request.method == 'POST':
+        try:
+            sleep_date = datetime.strptime(request.form['sleep_date'], '%Y-%m-%d')
+            hours_slept = float(request.form.get('hours_slept'))
+            sleep_quality = int(request.form.get('sleep_quality'))
+            notes = request.form.get('notes', '')
+
+            new_entry = SleepLog(
+                user_id=1,  # TODO temperary placeholder
+                sleep_date = sleep_date,
+                hours_slept = hours_slept,
+                sleep_quality = sleep_quality,
+                notes = notes
+            )
+
+            db.session.add(new_entry)
+            db.session.commit()
+            return redirect(url_for('index'))
+
+        except (ValueError, TypeError):
+            flash("Invalid input. Please make sure all fields are correctly filled.", "error")
+            return render_template('add_sleep_log.html')
+        except Exception as e:
+            flash("Unexpected error. Please try again later.", "error")
+            return render_template('add_sleep_log.html')
+    
+    return render_template('add_sleep_log.html')
