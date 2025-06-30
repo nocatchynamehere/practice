@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-9">
-    <link rel="stylesheet" href="../static/styles.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <title>Add Measurement</title>
+</head>
+<body>
+  <h2>Add Measurement</h2>
 
-<h2>Add Measurement</h2>
-<form method="POST">
-  <label>Date: <input type="date" name="measurement_date" required></label><br>
-  <label>Weight: <input type="text" name="weight"></label><br>
-  <label>Body Fat %: <input type="text" name="body_fat_pct"></label><br>
-  <label>Hips: <input type="text" name="hips_inches"></label><br>
-  <label>Waist: <input type="text" name="waist_inches"></label><br>
-  <label>Chest: <input type="text" name="chest_inches"></label><br>
-  <label>Thigh: <input type="text" name="thigh_inches"></label><br>
-  <label>Arm: <input type="text" name="arm_inches"></label><br>
-  <label>Resting HR: <input type="text" name="resting_heart_rate"></label><br>
-  <label>Mood (1–10): <input type="number" name="mood" min="1" max="10"></label><br>
-  <label>Pain Level (0–10): <input type="number" name="pain_level" min="0" max="10"></label><br>
-  <input type="submit" value="Save Measurement">
-</form>
+  {% include '_flashes.html' %}
+  
+  <main>
+    <form method="POST">
+      <label for="measurement_date">Date: </label>
+      <input type="date" id="measurement_date" name="measurement_date" required><br>
+      <label for="weight">Weight: </label>
+      <input type="number" id="weight" name="weight" step="0.1"><br>
+      <label for="body_fat_pct">Body Fat %: </label>
+      <input type="number" id="body_fat_pct" name="body_fat_pct" step="0.1"><br>
+      <label for="hips_inches">Hips: </label>
+      <input type="number" id="hips_inches" name="hips_inches" step="0.1"><br>
+      <label for="waist_inches">Waist: </label>
+      <input type="number" id="waist_inches" name="waist_inches" step="0.1"><br>
+      <label for="chest_inches">Chest: </label>
+      <input type="number" id="chest_inches" name="chest_inches" step="0.1"><br>
+      <label for="thigh_inches">Thigh: </label>
+      <input type="number" id="thigh_inches" name="thigh_inches" step="0.1"><br>
+      <label for="arm_inches">Arm: </label>
+      <input type="number" id="arm_inches" name="arm_inches" step="0.1"><br>
+      <label for="resting_heart_rate">Resting HR: </label>
+      <input type="number" id="resting_heart_rate" name="resting_heart_rate"><br>
+      <label for="mood">Mood (1-10): </label>
+      <input type="number" id="mood" name="mood" min="1" max="10"><br>
+      <label for="pain_level">Pain Level (0-10): </label>
+      <input type="number" id="pain_level" name="pain_level" min="0" max="10" step="0.1"><br>
+      <input type="submit" value="Save Measurement">
+    </form>
+  </main>
+</body>
 </html>
